@@ -1,1 +1,15 @@
-<p>currency works!</p>
+<section class="currency">
+    <div class="currency__info">
+    <h1>Currency {{nameCurrency}}</h1>
+    <p>{{data | async | date:'dd/MM/yyyy, HH:mm:ss'}}</p>
+    </div>
+    <div class="currency__expanding">
+    <button
+    tuiButton
+    type="button"
+    size="xs"
+    [appearance]="expanded ? 'secondary' : 'primary'"
+    (click)="toggle()">{{ expanded ? '-' : '+' }}
+  </button>
+</div>
+</section>
