@@ -1,0 +1,18 @@
+<div class="course">
+  <div class="course__name">
+    {{ nameCurrency }}
+  </div>
+  <div class="course__rate">
+    <div>{{ course$ | async | number: '1.2-2' }}</div>
+    <div *ngIf="delay">
+      <tui-svg src="tuiIconChevronUp" *ngIf="changing$.getValue() > 0"
+        >+</tui-svg
+      >
+      <tui-svg src="tuiIconChevronDown" *ngIf="changing$.getValue() < 0"
+        >-</tui-svg
+      >
+      <div></div>
+    </div>
+    <div *ngIf="delay">({{ changing$ | async | number: '1.2-2' }})</div>
+  </div>
+</div>
