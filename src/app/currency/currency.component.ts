@@ -11,7 +11,7 @@ import { CurrencyService } from './currency.service';
 export class CurrencyComponent {
   @Input() public nameCurrency = '';
   private sourceTime = timer(0, 1000);
-  private sourceTimeFetch = timer(0, 10000);
+  private sourceTimeFetch = timer(0, 5000);
   public expanded = false;
   public data$ = new BehaviorSubject(Date.now());
 
