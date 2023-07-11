@@ -1,18 +1,22 @@
 .currency {
-        display: flex;
-        flex-direction: row;
-        margin: 20px;      
-        &__info{
-            padding-right: 15px;
-        }
-        &__info > p{
-            font-size: 12px;
-            font-weight: 400;
-        }
+  max-width: 200px;
+  margin: 20px;
+  &__header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  &__info {
+    padding-right: 15px;
+  }
+  &__info > p {
+    font-size: 12px;
+    font-weight: 400;
+  }
 }
 
 @media (max-width: 240px) {
-    .currency {
+  .currency {
     margin: 5px;
-    }
+  }
 }

@@ -1,21 +1,26 @@
-import { ChangeDetectionStrategy, Component, Input, OnDestroy } from '@angular/core';
-import { BehaviorSubject, Observable, of, timer } from 'rxjs';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { BehaviorSubject, timer } from 'rxjs';
+import { CurrencyService } from './currency.service';
 
 @Component({
   selector: 'app-currency',
   templateUrl: './currency.component.html',
   styleUrls: ['./currency.component.less'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CurrencyComponent {
   @Input() public nameCurrency = '';
-  private sourceTime = timer(0,1000);
+  private sourceTime = timer(0, 1000);
+  private sourceTimeFetch = timer(0, 5000);
   public expanded = false;
-  public data = new BehaviorSubject(Date.now());
+  public data$ = new BehaviorSubject(Date.now());
 
-  constructor(){
+  constructor(private readonly currencyService: CurrencyService) {
     this.sourceTime.subscribe(() => {
-      this.data.next(Date.now());
+      this.data$.next(Date.now());
+    });
+    this.sourceTimeFetch.subscribe(() => {
+      this.currencyService.fetchCourse();
     });
   }
 

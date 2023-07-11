@@ -1,15 +1,28 @@
 <section class="currency">
+  <div class="currency__header">
     <div class="currency__info">
-    <h1>Currency {{nameCurrency}}</h1>
-    <p>{{data | async | date:'dd/MM/yyyy, HH:mm:ss'}}</p>
+      <h1>Currency {{ nameCurrency }}</h1>
+      <p>{{ data$ | async | date: 'dd/MM/yyyy, HH:mm:ss' }}</p>
     </div>
     <div class="currency__expanding">
-    <button
-    tuiButton
-    type="button"
-    size="xs"
-    [appearance]="expanded ? 'secondary' : 'primary'"
-    (click)="toggle()">{{ expanded ? '-' : '+' }}
-  </button>
-</div>
+      <button
+        tuiButton
+        type="button"
+        size="xs"
+        [appearance]="expanded ? 'secondary' : 'primary'"
+        (click)="toggle()">
+        {{ expanded ? '-' : '+' }}
+      </button>
+    </div>
+  </div>
+  <div class="currency__course">
+    <app-currency-item nameCurrency="USD"></app-currency-item>
+    <app-currency-item nameCurrency="EUR"></app-currency-item>
+    <app-currency-item nameCurrency="GBP"></app-currency-item>
+    <div *ngIf="expanded">
+      <app-currency-item nameCurrency="CNY"></app-currency-item>
+      <app-currency-item nameCurrency="JPY"></app-currency-item>
+      <app-currency-item nameCurrency="TRY"></app-currency-item>
+    </div>
+  </div>
 </section>
